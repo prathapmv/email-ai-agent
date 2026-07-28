@@ -1,0 +1,11 @@
+# All the below files/content/folders will be ignored while pushing it to git.
+# Sensitive information are not available to the public.
+venv/
+__pycache__/
+*.pyc
+.env
+credentials.json
+token.json
+*.db
+.DS_Store
+memory_store/
