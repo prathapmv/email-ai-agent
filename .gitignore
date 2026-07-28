@@ -9,3 +9,4 @@ token.json
 *.db
 .DS_Store
 memory_store/
+emailagentenv/
