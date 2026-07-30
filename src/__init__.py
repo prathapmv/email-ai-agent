@@ -1,0 +1,1 @@
+## Made 'src' folder as package for the other files to use import 'from'. Command ran -> touch src/__init__.py
