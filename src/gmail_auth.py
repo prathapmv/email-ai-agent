@@ -4,7 +4,7 @@ Phase 1: Gmail OAuth2 authentication.
 WHAT IT IS DONE HERE?:
 - OAuth2 "installed app" flow (browser consent → local redirect → token).
 - Why we request specific SCOPES (principle of least privilege — an agent
-  that only needs to read+modify shouldn't request full account access).
+  that only needs to read+modify shouldn't request full account access)?
 - Token persistence + silent refresh, so the agent doesn't re-prompt you
   for consent every single run.
  
@@ -60,11 +60,13 @@ def get_gmail_service():
         print('Saving the credentials to token.json')
         with TOKEN_FILE.open("w") as token:
             token.write(credentials.to_json())
+    
+    # build() - this is authenticated connection object that our Python code uses to talk directly to the Google Gmail API.
     return build('gmail', 'v1', credentials=credentials)
 
 if __name__ == "__main__":
     service = get_gmail_service()
     profile = service.users().getProfile(userId='me').execute()
-    print("\nSUCCESS! Authenticated successfully.")
+    print("SUCCESS! Authenticated successfully.")
     print(f"Connected Gmail Account: {profile.get('emailAddress')}")
     print(f"Total Messages in Inbox: {profile.get('messagesTotal')}")
